@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`applies class if priceOscilation is negative 1`] = `
+<div>
+  <div
+    class="Info"
+  >
+    <header
+      class="Info-header"
+    >
+      <h1
+        class="Info-title"
+      >
+        Bitcoin
+        - 
+        BTC
+      </h1>
+    </header>
+    <h1
+      class="Info-price Info-price-down"
+    >
+      $
+      123.45
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`applies class if priceOscilation is positive 1`] = `
+<div>
+  <div
+    class="Info"
+  >
+    <header
+      class="Info-header"
+    >
+      <h1
+        class="Info-title"
+      >
+        Bitcoin
+        - 
+        BTC
+      </h1>
+    </header>
+    <h1
+      class="Info-price Info-price-up"
+    >
+      $
+      123.45
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div
+    class="Info"
+  >
+    <header
+      class="Info-header"
+    >
+      <h1
+        class="Info-title"
+      >
+        Bitcoin
+        - 
+        BTC
+      </h1>
+    </header>
+    <h1
+      class="Info-price"
+    >
+      $
+      123.45
+    </h1>
+  </div>
+</div>
+`;

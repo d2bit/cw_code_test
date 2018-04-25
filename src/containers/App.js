@@ -5,28 +5,53 @@ import Info from '../components/Info'
 import './App.css'
 
 export class App extends React.PureComponent {
-  static COINS_TO_SHOW = ['bitcoin', 'ethereum', 'litecoin']
   static defaultProps = {
-    isFetching: true,
+    isFetching: false,
+    isData: false,
+    isError: false,
     coins: [],
     fetchCoins: () => {},
+    trackCoins: ['bitcoin', 'ethereum'],
+    refreshTime: 10000,
+  }
+
+  updateCoins = () => {
+    const {fetchCoins, trackCoins} = this.props
+    fetchCoins(trackCoins)
   }
 
   componentDidMount() {
-    this.props.fetchCoins(this.constructor.COINS_TO_SHOW)
+    const {refreshTime} = this.props
+    this.updateCoins()
+
+    this.interval = setInterval(this.updateCoins, refreshTime)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
 
   render() {
-    const {coins} = this.props
+    const {isData, isFetching, coins} = this.props
 
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">CoverWallet Code Test</h1>
         </header>
-        <div className="App-content">
-          {coins.map((coin) => <Info key={coin.id} data={coin} />)}
-        </div>
+        { !isData && isFetching && <div className='App-loading' /> }
+        { isData && <div className="App-content">
+            {coins.map((coin) =>
+              <Info
+              key={coin.id}
+              symbol={coin.symbol}
+              name={coin.name}
+              price={coin.price_usd}
+              priceOscilation={coin.priceOscilation}
+              />
+            )}
+          </div>
+        }
       </div>
     )
   }
@@ -34,6 +59,8 @@ export class App extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   isFetching: state.isFetching,
+  isData: state.isData,
+  isError: state.isError,
   coins: state.coins,
 })
 
