@@ -1,14 +1,15 @@
-import axios from 'axios'
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchCoins} from '../actions'
 import Info from '../components/Info'
+import './App.css'
 
-class App extends React.PureComponent {
+export class App extends React.PureComponent {
   static COINS_TO_SHOW = ['bitcoin', 'ethereum', 'litecoin']
   static defaultProps = {
     isFetching: true,
     coins: [],
+    fetchCoins: () => {},
   }
 
   componentDidMount() {
@@ -23,7 +24,9 @@ class App extends React.PureComponent {
         <header className="App-header">
           <h1 className="App-title">CoverWallet Code Test</h1>
         </header>
-        {coins.map((coin) => <Info key={coin.id} data={coin} />)}
+        <div className="App-content">
+          {coins.map((coin) => <Info key={coin.id} data={coin} />)}
+        </div>
       </div>
     )
   }

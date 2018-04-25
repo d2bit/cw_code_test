@@ -6,7 +6,6 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
-  console.log('actions', action)
   switch (action.type) {
     case COINS_REQUEST:
       return {...state, isFetching: true}

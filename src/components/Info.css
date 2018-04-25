@@ -1,0 +1,25 @@
+.Info {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  flex-basis: 30%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.Info-header {
+  flex: 1 0 auto;
+  border-bottom: 1px solid black;
+}
+
+.Info-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.Info-price {
+  font-size: 2.5rem;
+  margin: 2rem 0 1rem;
+}
