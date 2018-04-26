@@ -35,3 +35,37 @@ Once the pricing has been displayed for the first time, we’ll handle this feat
 We think that feels appropriate to render the **first price in white**, having it change to red if the price goes down and green if the price goes up. As the **price might be the same it could then turn white** or stay white.
 
 Good luck and happy coding!
+
+
+# Running the project
+
+## Using Docker
+
+First time
+
+* `docker-compose run --rm app bash` will open a session on the project container
+* `npm install` (fron inside the container) will install the project dependencies
+
+Start development environent
+
+* `docker-compose up` will run the project in [http://localhost:3000]()
+
+Run test suite
+
+* `docker-compose run --rm app bash` will open a session on the project container
+* `npm test` (from inside the container) will run the test suite
+
+## Without Docker
+
+Install dependencies
+
+`npm install`
+
+Start development environment [http://localhost:3000]()
+
+`npm start`
+
+Run test suite
+
+`npm test`
+
